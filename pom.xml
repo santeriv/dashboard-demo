@@ -8,7 +8,7 @@
 
 	<properties>
 		<productionMode>false</productionMode>
-		<vaadin.version>7.1.0.beta1</vaadin.version>
+		<vaadin.version>7.0.7<!-- Sasscompiler error with 7.1.0.beta1--></vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin.cloud.email></vaadin.cloud.email>
 		<vaadin.cloud.password></vaadin.cloud.password>
@@ -124,13 +124,18 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin.addon</groupId>
-			<artifactId>vaadin-calendar-cval-2.0</artifactId>
-			<version>2.0.0.beta3</version>
-		</dependency>
+			<artifactId>vaadin-calendar</artifactId>
+			<version>2.0.0</version>
+		</dependency><!--
 		<dependency>
 			<groupId>com.vaadin.addon</groupId>
 			<artifactId>vaadin-charts</artifactId>
 			<version>1.0.0</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.vaadin.addons</groupId>

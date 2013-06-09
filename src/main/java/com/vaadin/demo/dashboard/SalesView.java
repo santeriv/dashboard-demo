@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.vaadin.addon.timeline.Timeline;
+//import com.vaadin.addon.timeline.Timeline;
 import com.vaadin.data.util.IndexedContainer;
 import com.vaadin.demo.dashboard.data.DataProvider;
 import com.vaadin.demo.dashboard.data.DataProvider.Movie;
@@ -33,7 +33,7 @@ import com.vaadin.ui.VerticalLayout;
 
 public class SalesView extends VerticalLayout implements View {
 
-    private Timeline timeline;
+    //private Timeline timeline;
 
     Color[] colors = new Color[] { new Color(52, 154, 255),
             new Color(242, 81, 57), new Color(255, 201, 35),
@@ -87,23 +87,23 @@ public class SalesView extends VerticalLayout implements View {
         clear.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                timeline.removeAllGraphDataSources();
+                //timeline.removeAllGraphDataSources();
             }
         });
         toolbar.addComponent(clear);
         toolbar.setComponentAlignment(clear, Alignment.BOTTOM_RIGHT);
         toolbar.setExpandRatio(clear, 1);
 
-        timeline = new Timeline();
-        timeline.setDateSelectVisible(false);
-        timeline.setChartModesVisible(false);
-        timeline.setGraphShadowsEnabled(false);
-        timeline.setZoomLevelsVisible(false);
-        timeline.setSizeFull();
-        timeline.setNoDataSourceCaption("<span class=\"v-label h2 light\">Add a data set from the dropdown above</span>");
+        //timeline = new //timeline();
+        //timeline.setDateSelectVisible(false);
+        //timeline.setChartModesVisible(false);
+        //timeline.setGraphShadowsEnabled(false);
+        //timeline.setZoomLevelsVisible(false);
+        //timeline.setSizeFull();
+        //timeline.setNoDataSourceCaption("<span class=\"v-label h2 light\">Add a data set from the dropdown above</span>");
 
-        addComponent(timeline);
-        setExpandRatio(timeline, 1);
+        //addComponent(timeline);
+        //setExpandRatio(timeline, 1);
 
         // Add first 4 by default
         int i = 0;
@@ -116,8 +116,8 @@ public class SalesView extends VerticalLayout implements View {
         Date start = new Date();
         start.setMonth(start.getMonth() - 2);
         Date end = new Date();
-        if (timeline.getGraphDatasources().size() > 0)
-            timeline.setVisibleDateRange(start, end);
+        //if (timeline.getGraphDatasources().size() > 0)
+        //    timeline.setVisibleDateRange(start, end);
 
     }
 
@@ -134,13 +134,13 @@ public class SalesView extends VerticalLayout implements View {
     private void addDataSet(String title) {
         IndexedContainer revenue = ((DashboardUI) getUI()).dataProvider
                 .getRevenueForTitle(title);
-        timeline.addGraphDataSource(revenue, "timestamp", "revenue");
+        //timeline.addGraphDataSource(revenue, "timestamp", "revenue");
         colorIndex = (colorIndex >= colors.length - 1 ? 0 : ++colorIndex);
-        timeline.setGraphOutlineColor(revenue, colors[colorIndex]);
-        timeline.setBrowserOutlineColor(revenue, colors[colorIndex]);
-        timeline.setBrowserFillColor(revenue, colors[colorIndex].brighter());
-        timeline.setGraphLegend(revenue, title);
-        timeline.setEventCaptionPropertyId("date");
-        timeline.setVerticalAxisLegendUnit(revenue, "$");
+        //timeline.setGraphOutlineColor(revenue, colors[colorIndex]);
+        //timeline.setBrowserOutlineColor(revenue, colors[colorIndex]);
+        //timeline.setBrowserFillColor(revenue, colors[colorIndex].brighter());
+        //timeline.setGraphLegend(revenue, title);
+        //timeline.setEventCaptionPropertyId("date");
+        //timeline.setVerticalAxisLegendUnit(revenue, "$");
     }
 }

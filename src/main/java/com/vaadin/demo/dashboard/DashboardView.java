@@ -176,7 +176,7 @@ public class DashboardView extends VerticalLayout implements View {
         addComponent(row);
         setExpandRatio(row, 1.5f);
 
-        row.addComponent(createPanel(new TopGrossingMoviesChart()));
+        row.addComponent(createPanel(new HorizontalLayout()/*TopGrossingMoviesChart()*/));
 
         TextArea notes = new TextArea("Notes");
         notes.setValue("Remember to:\n· Zoom in and out in the Sales view\n· Filter the transactions and drag a set of them to the Reports tab\n· Create a new report\n· Change the schedule of the movie theater");
@@ -220,7 +220,7 @@ public class DashboardView extends VerticalLayout implements View {
 
         row.addComponent(createPanel(t));
 
-        row.addComponent(createPanel(new TopSixTheatersChart()));
+        row.addComponent(createPanel(new HorizontalLayout()/*TopSixTheatersChart()*/));
 
     }
 

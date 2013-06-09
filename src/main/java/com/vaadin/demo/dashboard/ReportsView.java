@@ -604,7 +604,7 @@ public class ReportsView extends HorizontalLayout implements View {
 
                 return t;
             } else if (caption.equals("chart")) {
-                return new TopSixTheatersChart();
+                return new HorizontalLayout();/*TopSixTheatersChart();*/
             }
         }
 
