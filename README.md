@@ -1,4 +1,4 @@
-Vaadin QuickTickets Dashboard Demo
+Vaadin QuickTickets Dashboard Demo (without charts addon)
 ==================================
 
 Sources for the official Vaadin desktop browser demo application: http://demo.vaadin.com/dashboard
@@ -15,6 +15,9 @@ Licenses
 The source code is released under Apache 2.0.
 
 The application uses a couple of add-ons:
- * Vaadin Charts, Commercial Vaadin Addon License: https://vaadin.com/license/cval-2.0
  * Vaadin Calendar, Apache 2.0
  * CSSInject, Apache 2.0
+
+Demo
+==
+Check "Schedule" view at [http://santeriv-vaadin-dashboard.orionhub.org:8080/#!/schedule]
