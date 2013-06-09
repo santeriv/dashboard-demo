@@ -81,10 +81,11 @@ public class DataProvider {
             this.duration = (int) ((1 + Math.round(Math.random())) * 60 + 45 + (Math
                     .random() * 30));
             try {
-                String datestr = releaseDates.get("theater").getAsString();
+                //String datestr = releaseDates.get("theater").getAsString();
+				String datestr = releaseDates.get("text").getAsString();
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 releaseDate = df.parse(datestr);
-                score = critics.get("critics_score").getAsInt();
+                score = 5;//critics.get("critics_score").getAsInt();
                 sortScore = 0.6 / (0.01 + (System.currentTimeMillis() - releaseDate
                         .getTime()) / (1000 * 60 * 60 * 24 * 5));
                 sortScore += 10.0 / (101 - score);
@@ -152,9 +153,12 @@ public class DataProvider {
                             * 60 * 60 * 24) {
                 json = readJsonFromFile(cache);
             } else {
-                // Get an API key from http://developer.rottentomatoes.com
+                /*
+				// Get an API key from http://developer.rottentomatoes.com
                 String apiKey = "###############";
                 json = readJsonFromUrl("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=30&apikey=" + apiKey);
+				*/
+				json = readJsonFromUrl("http://pulljson.com/jquery?site=http://www.finnkino.fi/xml/Schedule/?area=1019&selector=find('Show')");
                 // Store in cache
                 FileWriter fileWriter = new FileWriter(cache);
                 fileWriter.write(json.toString());
@@ -170,7 +174,7 @@ public class DataProvider {
 
         JsonArray moviesJson;
         movies.clear();
-        moviesJson = json.getAsJsonArray("movies");
+        /*moviesJson = json.getAsJsonArray("movies");
         for (int i = 0; i < moviesJson.size(); i++) {
             JsonObject movieJson = moviesJson.get(i).getAsJsonObject();
             JsonObject posters = movieJson.get("posters").getAsJsonObject();
@@ -184,6 +188,22 @@ public class DataProvider {
                                 .get("ratings").getAsJsonObject());
                 movies.add(movie);
             }
+        }
+		/* pulljson.com + finnkino.fi */
+		moviesJson = json.getAsJsonArray("results");
+        for (int i = 0; i < moviesJson.size(); i++) {
+            JsonObject movieJson = moviesJson.get(i).getAsJsonObject();
+            JsonObject posters = movieJson.get("IMAGES").getAsJsonObject();
+            /*if (!posters.get("profile").getAsString().contains("poster_default")) {*/
+				/*        Movie(String title, String synopsis, String thumbUrl, String posterUrl,JsonObject releaseDates, JsonObject critics) */	
+                Movie movie = new Movie(movieJson.get("TITLE").getAsJsonObject().get("text").getAsString(),
+                        movieJson.get("GENRES").getAsJsonObject().get("text").getAsString(), posters.get(
+                                "EVENTMICROIMAGEPORTRAIT").getAsJsonObject().get("text").getAsString(), posters.get(
+                                "EVENTLARGEIMAGELANDSCAPE").getAsJsonObject().get("text").getAsString(), movieJson.get(
+                                "DTTMSHOWSTARTUTC").getAsJsonObject(), null/*movieJson
+                                .get("ratings").getAsJsonObject()*/);
+                movies.add(movie);
+            /*}*/
         }
     }
 
