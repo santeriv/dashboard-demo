@@ -158,6 +158,7 @@ public class DataProvider {
                 String apiKey = "###############";
                 json = readJsonFromUrl("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=30&apikey=" + apiKey);
 				*/
+            	// Get JSON data from finnkino xml service (Pori,Finland "Promenadi" theather is area=1019)
 				json = readJsonFromUrl("http://pulljson.com/jquery?site=http://www.finnkino.fi/xml/Schedule/?area=1019&selector=find('Show')");
                 // Store in cache
                 FileWriter fileWriter = new FileWriter(cache);
@@ -200,7 +201,7 @@ public class DataProvider {
                         movieJson.get("GENRES").getAsJsonObject().get("text").getAsString(), posters.get(
                                 "EVENTMICROIMAGEPORTRAIT").getAsJsonObject().get("text").getAsString(), posters.get(
                                 "EVENTLARGEIMAGELANDSCAPE").getAsJsonObject().get("text").getAsString(), movieJson.get(
-                                "DTTMSHOWSTARTUTC").getAsJsonObject(), null/*movieJson
+                                "DTTMSHOWSTART").getAsJsonObject(), null/*movieJson
                                 .get("ratings").getAsJsonObject()*/);
                 movies.add(movie);
             /*}*/
