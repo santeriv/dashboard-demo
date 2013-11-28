@@ -419,10 +419,10 @@ public class DataProvider {
         String room = rooms.get((int) (rand.nextDouble() * (rooms.size() - 1)));
 
         // Title
-        int randomIndex = (int) (Math.abs(rand.nextGaussian()) * (movies.size() / 2.0 - 1));
-        while (randomIndex >= movies.size()) {
-            randomIndex = (int) (Math.abs(rand.nextGaussian()) * (movies.size() / 2.0 - 1));
+        if(movies.size() == 0) {
+        	return;
         }
+        int randomIndex = rand.nextInt(movies.size());
         if (movies.get(randomIndex).releaseDate.compareTo(cal.getTime()) >= 0) {
             // System.out.println("skipped " + movies.get(randomIndex).title);
             // System.out.println(df.format(movies.get(randomIndex).releaseDate));
