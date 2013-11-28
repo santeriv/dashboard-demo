@@ -26,20 +26,19 @@ public class MyConverterFactory extends DefaultConverterFactory {
         if (presentationType == String.class && modelType == Calendar.class) {
             return (Converter<PRESENTATION, MODEL>) new Converter<String, Calendar>() {
 
-                @Override
-                public Calendar convertToModel(String value, Locale locale)
-                        throws com.vaadin.data.util.converter.Converter.ConversionException {
+				@Override
+				public Calendar convertToModel(String value,Class<? extends Calendar> targetType, Locale locale)
+						throws com.vaadin.data.util.converter.Converter.ConversionException {
                     return new GregorianCalendar();
-                }
-
-                @Override
-                public String convertToPresentation(Calendar value,
-                        Locale locale)
-                        throws com.vaadin.data.util.converter.Converter.ConversionException {
+				}
+				
+				@Override
+				public String convertToPresentation(Calendar value,Class<? extends String> targetType, Locale locale)
+						throws com.vaadin.data.util.converter.Converter.ConversionException {
                     SimpleDateFormat df = new SimpleDateFormat();
                     df.applyPattern("mm/dd/yyyy hh:mm aa");
                     return df.format(value.getTime());
-                }
+				}
 
                 @Override
                 public Class<Calendar> getModelType() {
